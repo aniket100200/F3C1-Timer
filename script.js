@@ -67,7 +67,7 @@ setInterval(() =>
    currMin.innerHTML=`${y>9 ? y : ("0"+y)}`;
    currSec.innerHTML=`${currCal>9 ? currCal : ("0"+currCal)}`;
 
-    audio.play();
+    
 }, 1000);
 
 setTimeout(() => 
@@ -85,6 +85,7 @@ stopBtn.addEventListener('click',e=>{
     currentTimers.removeChild(newTimer);
     audio.pause();
 });
+    audio.play();
 
     clearTimeout();
 
