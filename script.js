@@ -2,7 +2,8 @@ const setBtn=document.querySelector(".btn"),
 hours=document.querySelector("#hour"),
 minutes=document.querySelector("#minute"),
 seconds=document.querySelector("#second"),
-currentTimers=document.querySelector(".currentTimers")
+currentTimers=document.querySelector(".currentTimers"),
+audio=document.querySelector("audio");
 
 let count=1;
 
@@ -65,8 +66,8 @@ setInterval(() =>
    currHour.innerHTML=`${x>9 ? x : ("0"+x)}`;
    currMin.innerHTML=`${y>9 ? y : ("0"+y)}`;
    currSec.innerHTML=`${currCal>9 ? currCal : ("0"+currCal)}`;
- 
 
+    audio.play();
 }, 1000);
 
 setTimeout(() => 
@@ -82,6 +83,7 @@ let stopBtn=newTimer.querySelector(".stop");
 stopBtn.addEventListener('click',e=>{
     e.preventDefault();
     currentTimers.removeChild(newTimer);
+    audio.pause();
 });
 
     clearTimeout();
