@@ -40,14 +40,10 @@ let delBtn=newTimer.querySelector(".del");
 
 currentTimers.appendChild(newTimer);
 
-delBtn.addEventListener('click',(e)=>
-{
-    e.preventDefault();
-        currentTimers.removeChild(newTimer);
-});
+
 
 let timeOutTime=totalTime*1000;
-setInterval(() => 
+let interval=setInterval(() => 
 {
     totalTime--;
 
@@ -70,9 +66,9 @@ setInterval(() =>
     
 }, 1000);
 
-setTimeout(() => 
+let timeOut=setTimeout(() => 
 {
-    clearInterval();
+    clearInterval(interval);
     newTimer.innerHTML=`
     <div>Timer Is Up!</div>
     <button class="stop">Stop</button>  
@@ -87,9 +83,18 @@ stopBtn.addEventListener('click',e=>{
 });
     audio.play();
 
-    clearTimeout();
+    clearTimeout(timeOut);
 
 }, timeOutTime);
+
+
+delBtn.addEventListener('click',(e)=>
+{
+    e.preventDefault();
+        currentTimers.removeChild(newTimer);
+        clearInterval(interval);
+        clearTimeout(timeOut);
+});
 
 count++;
 
